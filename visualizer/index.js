@@ -1,19 +1,23 @@
 $(function () {
     const fs = require('fs');
-    var args = require('electron').remote.process.argv;
+  var args = require('electron').remote.process.argv;
+  function readFromArgs() {
     if (args.length > 2) {
-        fs.readFile(args[2], 'utf-8', function (err, data) {
-            if(err){
-              alert("An error ocurred reading the file :" + err.message);
-              return;
-            }
-            console.log(data);
-            $("label[for=filePicker]").text("Select another file");
-            var fsHeight = $("#fileSelect").outerHeight();
-            showGame(textToGame(data, args[2]), $("#displayArea"), null, -fsHeight, true, false, true);
-        });
+      fs.readFile(args[2], 'utf-8', function (err, data) {
+        if(err){
+          alert("An error ocurred reading the file :" + err.message);
+          return;
+        }
+        console.log(data);
+        $("#displayArea").empty();
+        $("label[for=filePicker]").text("Select another file");
+        var fsHeight = $("#fileSelect").outerHeight();
+        showGame(textToGame(data, args[2]), $("#displayArea"), null, -fsHeight, true, false, true);
+      });
     }
+  }
 
+  readFromArgs();
     var $dropZone = $("html");
     var $filePicker = $("#filePicker");
     function handleFiles(files) {
@@ -47,4 +51,7 @@ $(function () {
         var files = e.target.files
         handleFiles(files)
     });
+  $("#startnext").on('click', function() {
+    readFromArgs();
+  })
 })
