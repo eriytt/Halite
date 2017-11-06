@@ -3,6 +3,7 @@
 ENVIRONMENT="halite"
 RUNFILE="run.sh"
 WORKINGPATH="workingPath"
+BOTPREFIX="/home/halite/uploads"
 
 if [ ! -f $ENVIRONMENT ]; then
     echo "NO ENVIRONMENT!!"
@@ -21,7 +22,7 @@ BOTSTART=4
 mkdir $WORKINGPATH
 cp $ENVIRONMENT $WORKINGPATH
 for BOT in ${@:$BOTSTART:$NUMBOTS};
-    do mv $BOT $WORKINGPATH;
+    do cp -a "$BOTPREFIX/$BOT" $WORKINGPATH;
 done
 
 cd $WORKINGPATH
@@ -38,7 +39,8 @@ do
     BOTNAMEINDEX=$(($i+$NUMBOTS));
     BOTNAME=${!BOTNAMEINDEX};
 
-    BOTSTARTCOMMANDS+="\"/usr/bin/docker run --net=none --memory='350m' --cpu-shares=1024 --storage-opt size=10G -i -v $PWD/$BOT:$PWD/$BOT mntruell/halite_sandbox:latest sh -c 'cd $PWD/$BOT && ./$RUNFILE'\" "
+    #BOTSTARTCOMMANDS+="\"/usr/bin/docker run --net=none --memory='350m' --cpu-shares=1024 --storage-opt size=10G -i -v $PWD/$BOT:$PWD/$BOT mntruell/halite_sandbox:latest sh -c 'cd $PWD/$BOT && ./$RUNFILE'\" "
+    BOTSTARTCOMMANDS+="\"/usr/bin/docker run --net=none --memory='350m' --cpu-shares=1024 -i -v $PWD/$BOT:$PWD/$BOT:ro mntruell/halite_sandbox:latest sh -c 'cd $PWD/$BOT && ./$RUNFILE'\" "
     BOTSTARTCOMMANDS+="\"$BOTNAME\" ";
 done
 
@@ -48,12 +50,12 @@ RUN_GAME_COMMAND="./$ENVIRONMENT -q -o -d \"$WIDTH $HEIGHT\" $BOTSTARTCOMMANDS"
 echo $RUN_GAME_COMMAND;
 eval $RUN_GAME_COMMAND;
 
-docker kill  $(docker ps -aq) >/dev/null
+docker stop  $(docker ps -aq) >/dev/null
 docker rm -v $(docker ps -aq) >/dev/null
 
-rm /run/network/ifstate.veth*
+#rm /run/network/ifstate.veth*
 
 mv *.hlt ../
 mv *.log ../
 cd ..
-rm -r $WORKINGPATH
+rm -rf $WORKINGPATH
