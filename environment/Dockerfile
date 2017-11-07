@@ -36,4 +36,4 @@ COPY networking networking
 COPY tclap tclap
 COPY Makefile main.cpp ./
 
-RUN make
+RUN make clean && make
