@@ -1,5 +1,5 @@
 #!/bin/bash
 
-gcc MyBot.c -o MyBot.o
-gcc RandomBot.c -o RandomBot.o
-./halite -d "30 30" "./MyBot.o" "./RandomBot.o"
+gcc MyBot.c -o MyBot
+gcc RandomBot.c -o RandomBot
+./halite -d "30 30" "./MyBot" "./RandomBot"
