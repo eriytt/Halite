@@ -10,7 +10,7 @@ BOTS=$*
 NUMBOTS=`echo $BOTS | wc -w`
 
 pushd $WORKERDIR
-./runGame.sh $WIDTH $HEIGHT $NUMBOTS $BOTS $BOTS
+./runGame.sh $WIDTH $HEIGHT $NUMBOTS $BOTS
 
 cat *.hlt > visualizer_pipe
 rm *.hlt

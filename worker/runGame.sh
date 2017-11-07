@@ -41,12 +41,11 @@ do
 
     #BOTSTARTCOMMANDS+="\"/usr/bin/docker run --net=none --memory='350m' --cpu-shares=1024 --storage-opt size=10G -i -v $PWD/$BOT:$PWD/$BOT mntruell/halite_sandbox:latest sh -c 'cd $PWD/$BOT && ./$RUNFILE'\" "
     BOTSTARTCOMMANDS+="\"/usr/bin/docker run --net=none --memory='350m' --cpu-shares=1024 -i -v $PWD/$BOT:$PWD/$BOT:ro mntruell/halite_sandbox:latest sh -c 'cd $PWD/$BOT && ./$RUNFILE'\" "
-    BOTSTARTCOMMANDS+="\"$BOTNAME\" ";
 done
 
 eval "chmod +x $ENVIRONMENT"
 
-RUN_GAME_COMMAND="./$ENVIRONMENT -q -o -d \"$WIDTH $HEIGHT\" $BOTSTARTCOMMANDS"
+RUN_GAME_COMMAND="./$ENVIRONMENT -q -d \"$WIDTH $HEIGHT\" $BOTSTARTCOMMANDS"
 echo $RUN_GAME_COMMAND;
 eval $RUN_GAME_COMMAND;
 
