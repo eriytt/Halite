@@ -5,7 +5,7 @@ RUN apt-get update
 RUN apt-get install -y sudo
 RUN apt-get install -y curl
 
-RUN apt-get install -y libstdc++6 gcc g++ make python3 python3-pip python3-dev python3-numpy
+RUN apt-get install -y libstdc++6 gcc g++ gfortran make python3 python3-pip python3-dev python3-numpy
 RUN curl -sSf https://static.rust-lang.org/rustup.sh | sh
 RUN apt-get install -y python-software-properties software-properties-common openjdk-8-jdk scala
 
