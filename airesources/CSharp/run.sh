@@ -2,4 +2,4 @@
 
 cd `dirname $0`
 
-exec mono ./RandomBot
+exec mono ./MyBot.exe

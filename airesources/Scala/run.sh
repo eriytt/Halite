@@ -1,4 +1,4 @@
 #!/bin/bash
 
 cd `dirname $0`
-exec scala RandomBot
+exec scala MyBot

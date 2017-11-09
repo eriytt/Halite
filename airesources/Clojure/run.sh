@@ -2,4 +2,4 @@
 
 cd `dirname $0`
 
-exec java -cp target/MyBot.jar RandomBot
+exec java -cp target/MyBot.jar MyBot

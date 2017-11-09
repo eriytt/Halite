@@ -30,4 +30,4 @@ set PWD=/%PWD::=%
 set PWD=%PWD:C=c%
 set PWD=%PWD:D=d%
 
-docker run --rm -it -v %PWD%:/bot -w / "learningwell/halite_dev" /bot/compile.sh
+docker run --rm -it -v "%PWD%":/bot -w / "learningwell/halite_dev" /bot/compile.sh

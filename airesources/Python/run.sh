@@ -3,7 +3,7 @@
 cd `dirname $0`
 
 if hash python3 2>/dev/null; then
-    exec python3 RandomBot.py
+    exec python3 MyBot.py
 else
-    exec python RandomBot.py
+    exec python MyBot.py
 fi

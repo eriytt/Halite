@@ -3,4 +3,4 @@
 cd `dirname $0`
 
 export GOPATH="$(pwd)"
-exec go run RandomBot.go
+exec go run MyBot.go

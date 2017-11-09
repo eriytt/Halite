@@ -16,7 +16,7 @@ RUN apt-get install -y mono-devel ruby
 RUN gem install bundler 
 
 RUN apt-get install -y golang php build-essential
-RUN curl -sL https://deb.nodesource.com/setup_7.x | bash -
+RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 RUN apt-get install -y nodejs ocaml
 
 RUN sh -c 'echo "$(curl -fsSL https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein)" > /usr/bin/lein'

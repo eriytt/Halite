@@ -2,4 +2,4 @@
 
 cd `dirname $0`
 
-exec php RandomBot.php
+exec php MyBot.php

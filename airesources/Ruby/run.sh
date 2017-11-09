@@ -2,4 +2,4 @@
 
 cd `dirname $0`
 
-exec ruby RandomBot.rb
+exec ruby MyBot.rb

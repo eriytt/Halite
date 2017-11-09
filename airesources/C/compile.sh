@@ -1,4 +1,4 @@
 #!/bin/bash
 
 cd `dirname $0`
-gcc RandomBot.c -o RandomBot
+gcc MyBot.c -o MyBot
