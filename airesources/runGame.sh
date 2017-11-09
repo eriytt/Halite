@@ -8,4 +8,18 @@ if [ ! -f run.sh ]; then
     exit -1
 fi
 
+rm -f *.hlt
+
 docker run --rm -t -v "$PWD":/bot -w /bot "learningwell/halite_dev" /bin/bash -c "ln -s /halite . ; /bot/runGame.sh"
+
+if [ ! $? ]; then
+    echo "Run game failed"
+    exit -1
+fi
+
+PLATFORM="darwin-x64"
+if [ `uname` == "Linux" ]; then
+    PLATFORM="linux-x64"
+fi
+
+../../../Halite-Visualizer-$PLATFORM/Halite-Visualizer dummy *.hlt
