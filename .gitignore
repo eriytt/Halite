@@ -452,3 +452,5 @@ screenlog.*
 
 node_modules
 /dist
+
+/environment/id_rsa
