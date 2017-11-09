@@ -10,6 +10,14 @@ if exist run.sh (
     exit /b
 )
 
+:: Check if using docker toolbox
+docker ps >nul 2>&1 && (
+    rem empty
+) || (
+    :: Make it possible to use docker commands
+    FOR /f "tokens=*" %%i IN ('docker-machine env default') DO %%i
+)
+
 set PWD=%cd:\=/%
 set PWD=/%PWD::=%
 set PWD=%PWD:C=c%

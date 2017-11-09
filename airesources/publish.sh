@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Team Number (Change this)
-TEAM_NUMBER="1"
+TEAM_NUMBER="19"
 SSH_SERVER="${1:-well.learningwell.se}"
 
 ../compileInDocker.sh
