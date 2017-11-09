@@ -1,8 +1,10 @@
+@echo off
+
 rem Team Number (Change this)
 set TEAM_NUMBER=19
 set SSH_SERVER=well.learningwell.se
 
-..\compileInDocker.bat
+call ..\compileInDocker.bat
 
 :: Check if using docker toolbox
 docker ps >nul 2>&1 && (
