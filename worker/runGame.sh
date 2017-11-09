@@ -3,7 +3,7 @@
 ENVIRONMENT="halite"
 RUNFILE="run.sh"
 WORKINGPATH="workingPath"
-BOTPREFIX="/home/halite/uploads"
+BOTPREFIX="/home/halite/teams"
 
 if [ ! -f $ENVIRONMENT ]; then
     echo "NO ENVIRONMENT!!"
