@@ -18,11 +18,11 @@ if exist compile.sh (
 )
 
 :: Check if using docker toolbox
-docker-machine >nul 2>&1 && (
+docker ps >nul 2>&1 && (
+    rem empty
+) || (
     :: Make it possible to use docker commands
     FOR /f "tokens=*" %%i IN ('docker-machine env default') DO %%i
-) || (
-    echo fail
 )
 
 set PWD=%cd:\=/%
