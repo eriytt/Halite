@@ -17,9 +17,11 @@ if [ ! $? ]; then
     exit -1
 fi
 
-PLATFORM="darwin-x64"
 if [ `uname` == "Linux" ]; then
     PLATFORM="linux-x64"
+    ../../../Halite-Visualizer-$PLATFORM/Halite-Visualizer dummy *.hlt
+else 
+    PLATFORM="darwin-x64"
+    ../../../Halite-Visualizer-$PLATFORM/Halite-Visualizer.app/Contents/MacOS/Halite-Visualizer dummy *.hlt
 fi
 
-../../../Halite-Visualizer-$PLATFORM/Halite-Visualizer dummy *.hlt
